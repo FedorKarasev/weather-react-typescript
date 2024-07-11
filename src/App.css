@@ -1,0 +1,53 @@
+.search-panel {
+  margin-top: 5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-shadow: 0.2rem 0.2rem 1rem #393939;
+}
+
+#searchInput {
+  width: 15rem;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.search-city-button {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.search-results {
+  width: 15rem;
+}
+
+.search-item {
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-item:hover {
+  background-color: #eee;
+}
+
+.search-item:last-child {
+  border-bottom: 0;
+}
+
+#currentLocation {
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.currentLocationIcon {
+  display: block;
+  height: 100%;
+}
