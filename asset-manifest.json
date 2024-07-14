@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/weather-react-typescript/static/css/main.cc911912.css",
-    "main.js": "/weather-react-typescript/static/js/main.bbf72a6b.js",
+    "main.js": "/weather-react-typescript/static/js/main.2871bf86.js",
     "index.html": "/weather-react-typescript/index.html",
     "main.cc911912.css.map": "/weather-react-typescript/static/css/main.cc911912.css.map",
-    "main.bbf72a6b.js.map": "/weather-react-typescript/static/js/main.bbf72a6b.js.map"
+    "main.2871bf86.js.map": "/weather-react-typescript/static/js/main.2871bf86.js.map"
   },
   "entrypoints": [
     "static/css/main.cc911912.css",
-    "static/js/main.bbf72a6b.js"
+    "static/js/main.2871bf86.js"
   ]
 }
