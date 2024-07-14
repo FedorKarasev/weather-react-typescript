@@ -12,7 +12,7 @@ export default function SearchPanel() {
 
   const searchCity = async () => {
     const limit = 5;
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limit}&appid=${APIkey}`;
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limit}&appid=${APIkey}`;
 
     const res = await fetch(url);
     const data = await res.json();
@@ -92,7 +92,7 @@ export default function SearchPanel() {
           autoFocus
         />
         <button type='button' onClick={() => getCurrentPositionHandler()} id='currentLocation'>
-          <img className='currentLocationIcon' src='/location.png' alt='Change location to current' />
+          <img className='currentLocationIcon' src='./location.png' alt='Change location to current' />
         </button>
       </form>
       <ul className='search-results'>

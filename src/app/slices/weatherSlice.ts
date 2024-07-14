@@ -3,11 +3,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialWeather = JSON.parse(localStorage.getItem('weather'));
 
 const initialState = {
-  name: initialWeather.name || '',
-  temp: initialWeather.temp || 0,
-  feelsLike: initialWeather.feelsLike || 0,
-  humidity: initialWeather.humidity || 0,
-  icon: initialWeather.icon || '',
+  name: initialWeather?.name || '',
+  temp: initialWeather?.temp || 0,
+  feelsLike: initialWeather?.feelsLike || 0,
+  humidity: initialWeather?.humidity || 0,
+  icon: initialWeather?.icon || '',
 };
 
 export const weatherSlice = createSlice({
