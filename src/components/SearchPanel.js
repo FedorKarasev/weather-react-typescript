@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../app/hooks/redux.ts';
+import { changeGeolocation, setCityName } from '../app/slices/geolocationSlice.ts';
+import { setWeatherInformation } from '../app/slices/weatherSlice.ts';
 
 export default function SearchPanel() {
   const APIkey = '5131f785595a7dbb2e5f721c00417bf6';
-
-  const [cityName, setCityName] = useState('');
+  const cityName = useAppSelector((state) => state.geolocation.cityName);
   const [searchResults, setSearchResults] = useState([]);
-  const [currentLocation, setCurrentLocation] = useState({ lat: '', lon: '' });
 
-  const [temperature, setTemperature] = useState(0);
-  const [humidity, setHumidity] = useState(0);
-  const [windSpeed, setWindSpeed] = useState(0);
+  const dispatch = useAppDispatch();
 
   const searchCity = async () => {
     const limit = 5;
@@ -17,7 +16,6 @@ export default function SearchPanel() {
 
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data[0]);
 
     setSearchResults(data);
   };
@@ -31,12 +29,12 @@ export default function SearchPanel() {
   }, [cityName]);
 
   const inputCityNameHandler = (event) => {
-    setCityName(event.target.value);
+    dispatch(setCityName(event.target.value));
   };
 
   const getCurrentPositionHandler = () => {
     const success = (pos) => {
-      setCurrentLocation({ lat: pos.coords.lat, lon: pos.coords.lon });
+      selectCityHandler({ lat: pos.coords.latitude, lon: pos.coords.longitude });
     };
 
     const error = (err) => {
@@ -64,10 +62,10 @@ export default function SearchPanel() {
   const selectCityHandler = async (cityCoords) => {
     let weatherData = await getWeatherInformation(cityCoords);
 
-    setTemperature(weatherData.main.temp);
-    setSearchResults([]);
+    dispatch(setWeatherInformation(weatherData));
+    dispatch(changeGeolocation());
 
-    console.log(weatherData);
+    setSearchResults([]);
   };
 
   return (
@@ -77,14 +75,13 @@ export default function SearchPanel() {
           id='searchInput'
           type='text'
           placeholder='Enter city...'
+          autoComplete='off'
           value={cityName}
           onInput={inputCityNameHandler}
+          autoFocus
         />
-        <button onClick={getCurrentPositionHandler} id='currentLocation'>
+        <button type='button' onClick={() => getCurrentPositionHandler()} id='currentLocation'>
           <img className='currentLocationIcon' src='/location.png' alt='Change location to current' />
-        </button>
-        <button className='search-city-button' type='submit'>
-          Search
         </button>
       </form>
       <ul className='search-results'>

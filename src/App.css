@@ -13,13 +13,6 @@ form {
   width: 15rem;
   margin: 0;
   padding: 0.5rem 1rem;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-}
-
-.search-city-button {
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
 }
 
 .search-results {

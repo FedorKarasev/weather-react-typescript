@@ -1,0 +1,47 @@
+.weather-information {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.weather-information_additional {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  padding: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.city-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #5e0000;
+}
+
+.weather-information_temperature {
+  font-weight: bold;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.weather-information_temperature span {
+  font-size: 2rem;
+}
+
+.weather-information_additional span {
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+
+#changeCityBtn {
+  margin-top: 2rem;
+}

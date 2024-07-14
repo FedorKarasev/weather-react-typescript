@@ -1,14 +1,13 @@
 import SearchPanel from './components/SearchPanel';
+import WeatherInformation from './components/WeatherInformation.js';
 import './App.css';
-import WeatherInformation from './components/WeatherInformation';
+
+import { useAppSelector } from './app/hooks/redux.ts';
 
 function App() {
-  return (
-    <>
-      <SearchPanel />
-      <WeatherInformation />
-    </>
-  );
+  const { changingCity } = useAppSelector((state) => state.geolocation);
+
+  return <>{changingCity === true ? <SearchPanel /> : <WeatherInformation />}</>;
 }
 
 export default App;
