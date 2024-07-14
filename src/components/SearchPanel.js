@@ -63,7 +63,18 @@ export default function SearchPanel() {
     let weatherData = await getWeatherInformation(cityCoords);
 
     dispatch(setWeatherInformation(weatherData));
-    dispatch(changeGeolocation());
+    dispatch(changeGeolocation(weatherData));
+
+    localStorage.setItem(
+      'geolocation',
+      JSON.stringify({
+        cityName: weatherData.name,
+        coords: {
+          lon: weatherData.coord.lon,
+          lat: weatherData.coord.lat,
+        },
+      })
+    );
 
     setSearchResults([]);
   };

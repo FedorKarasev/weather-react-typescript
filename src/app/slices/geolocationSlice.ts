@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 
+const initialGeolocation = JSON.parse(localStorage.getItem('geolocation'));
+
 const initialState = {
-  cityName: '',
+  cityName: initialGeolocation.cityName || '',
   coords: {
-    lon: 0,
-    lat: 0,
+    lon: initialGeolocation.coords.lon || 0,
+    lat: initialGeolocation.coords.lat || 0,
   },
-  changingCity: true,
+  changingCity: initialGeolocation ? false : true,
 };
 
 export const geolocationSlice = createSlice({
@@ -17,7 +19,6 @@ export const geolocationSlice = createSlice({
     setCityName: (state, action: PayloadAction<string>) => {
       state.cityName = action.payload;
     },
-    setCurrentLocation: (state, action: PayloadAction<object>) => {},
     changeGeolocation: (state) => {
       state.changingCity = !state.changingCity;
     },
